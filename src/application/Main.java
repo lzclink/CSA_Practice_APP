@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
@@ -18,16 +19,19 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 
 public class Main extends Application {
 	
 	Screen screen = Screen.getPrimary();
-    //获取屏幕宽高 Rectangle2D [minX = 0.0, minY=0.0, maxX=2560.0, maxY=1440.0, width=2560.0, height=1440.0]
+    // get screen information   Rectangle2D [minX = 0.0, minY=0.0, maxX=2560.0, maxY=1440.0, width=2560.0, height=1440.0]
     Rectangle2D rec1 = screen.getBounds();
-    // 获取屏幕可视宽高 Rectangle2D [minX = 0.0, minY=0.0, maxX=2560.0, maxY=1400.0, width=2560.0, height=1400.0]
+    // get  Rectangle2D [minX = 0.0, minY=0.0, maxX=2560.0, maxY=1400.0, width=2560.0, height=1400.0]
     Rectangle2D rec2 = screen.getVisualBounds();
 
 	// 0->19
@@ -193,17 +197,102 @@ public class Main extends Application {
 				
 			},
 	};
-		
+	String[][] imageUrlsA = {
+			{
+				"application/database/2019/answer/2019-1-a.png",
+				"application/database/2019/answer/2019-1-b.png",
+				"application/database/2019/answer/2019-2.png",
+				"application/database/2019/answer/2019-3-a.png",
+				"application/database/2019/answer/2019-3-b.png",
+				"application/database/2019/answer/2019-4-a.png",
+				"application/database/2019/answer/2019-4-b.png",
+			},
+			
+			{
+				"application/database/2018/answer/2018-1-a.png",
+				"application/database/2018/answer/2018-1-b.png",
+				"application/database/2018/answer/2018-2-a.png",
+				"application/database/2018/answer/2018-2-b.png",
+				"application/database/2018/answer/2018-3.png",
+				"application/database/2018/answer/2018-4-a.png",
+				"application/database/2018/answer/2018-4-b.png",	
+			},
+			
+			{
+				"application/database/2017/answer/2017-1-a.png",
+				"application/database/2017/answer/2017-1-b.png",
+				"application/database/2017/answer/2017-2.png",
+				"application/database/2017/answer/2017-3-a.png",
+				"application/database/2017/answer/2017-3-b.png",
+				"application/database/2017/answer/2017-4-a.png",
+				"application/database/2017/answer/2017-4-b.png",	
+			},
+			
+			{
+				"application/database/2016/answer/2016-1-a.png",
+				"application/database/2016/answer/2016-1-b.png",
+				"application/database/2016/answer/2016-2-a.png",
+				"application/database/2016/answer/2016-2-b.png",
+				"application/database/2016/answer/2016-2-c.png",
+				"application/database/2016/answer/2016-3-a.png",
+				"application/database/2016/answer/2016-3-b.png",
+				"application/database/2016/answer/2016-4-a.png",
+				"application/database/2016/answer/2016-4-b.png",
+				"application/database/2016/answer/2016-4-c.png",
+			},
+			
+			{
+				"application/database/2015/answer/2015-1-a.png",
+				"application/database/2015/answer/2015-1-b.png",
+				"application/database/2015/answer/2015-1-c.png",
+				"application/database/2015/answer/2015-2.png",
+				"application/database/2015/answer/2015-3-a.png",
+				"application/database/2015/answer/2015-3-b.png",
+				"application/database/2015/answer/2015-4-a.png",
+
+				"application/database/2015/answer/2015-4-b.png",
+				"application/database/2015/answer/2015-4-c.png",
+				
+				
+			},
+			
+			{
+				"application/database/2014/answer/2014-1-a.png",
+				"application/database/2014/answer/2014-1-b.png",
+				"application/database/2014/answer/2014-2.png",
+				"application/database/2014/answer/2014-3-a-1.png",
+				"application/database/2014/answer/2014-3-a-2.png",
+
+				"application/database/2014/answer/2014-3-b.png",
+				"application/database/2014/answer/2014-4-1.png",
+				"application/database/2014/answer/2014-4-2-1.png",
+				"application/database/2014/answer/2014-4-2-2.png",	
+			},
+			
+			{
+				"application/database/2013/answer/2013-1-a.png",
+				"application/database/2013/answer/2013-1-b.png",
+				"application/database/2013/answer/2013-2-a.png",
+				"application/database/2013/answer/2013-2-b.png",
+				"application/database/2013/answer/2013-3-a.png",
+				"application/database/2013/answer/2013-3-b.png",
+
+				"application/database/2013/answer/2013-4-a.png",
+				"application/database/2013/answer/2013-4-b.png",				
+			},
+	};
 	
 	// 0 zuo 1 you  2 shang 3 xia
 	
 	Button[][] change = new Button[10][4]; 
 	
 	Image[][] imgQ = new Image[imageUrlsQ.length][30];
+	Image[][] imgA = new Image[imageUrlsA.length][30];
 	
 	ImageView imageView = new ImageView();	
 	
 	int[] indexQ=new int[7];
+	int[] indexA=new int[7];
 	//0->19
 	//6->13
 	
@@ -216,7 +305,7 @@ public class Main extends Application {
 	
 	
 	int[] maxiQ= {16,16,18,22,21,14,20};
-	
+	int[] maxiA= {7,7,7,10,9,9,8};
 	
 	BorderPane leaf;
 	Scene editSc;
@@ -292,11 +381,34 @@ public class Main extends Application {
     			}
     		}
     		imageView.setPreserveRatio(true);
+    		
+    		for(int i=0;i<7;i++) {
+    			for(int j=0;j<imageUrlsA[i].length;j++) {
+    				imgA[i][j]=new Image(imageUrlsA[i][j]);
+    			}
+    		}
+    		imageView.setPreserveRatio(true);
 //    		imageView.setFitHeight(400);
 //    		imageView.setFitWidth(400);
     		
-    		VBox centV=new VBox();
     		
+    		HBox centV=new HBox();
+    		VBox Real=new VBox();
+    		Image bck = new Image("application/database/bnds.jpg",
+                    800D,800D,true,false);
+    		
+    		ImageView backgroud = new ImageView(bck);
+    		Real.getChildren().add(backgroud);
+    		btn19.setFont(Font.font(20));
+    		btn18.setFont(Font.font(20));
+    		btn17.setFont(Font.font(20));
+    		btn16.setFont(Font.font(20));
+    		btn15.setFont(Font.font(20));
+    		btn14.setFont(Font.font(20));
+    		btn13.setFont(Font.font(20));
+    		centV.setPadding(new Insets(10));
+    		centV.setSpacing(10);
+    		centV.setAlignment(Pos.CENTER);
 			centV.getChildren().add(btn19);
 			centV.getChildren().add(btn18);
 			centV.getChildren().add(btn17);
@@ -304,11 +416,13 @@ public class Main extends Application {
 			centV.getChildren().add(btn15);
 			centV.getChildren().add(btn14);
 			centV.getChildren().add(btn13);
-			root.setCenter(centV);
-			root.setAlignment(centV,Pos.CENTER);
+			Real.getChildren().add(centV);
+			root.setCenter(Real);
+			
+			root.setAlignment(Real,Pos.CENTER);
 			//Scene scene = new Scene(root,rec2.getWidth()-100,rec2.getHeight()-100);
 			
-			Scene scene = new Scene(root,200,400);
+			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			
 			
@@ -377,6 +491,8 @@ public class Main extends Application {
 		return leaf;
 	}
 	int tempi,tempj;
+	int mode=1;
+	// 1 for question    2 for answer
 	public void setChange() {
 		for(int i=0;i<10;i++) {
 			for(int j=0;j<4;j++) {
@@ -386,9 +502,16 @@ public class Main extends Application {
 					change[i][j]=new Button("prev");
 					change[i][j].setOnAction(new EventHandler<ActionEvent>() {
 		    			public void handle(ActionEvent event) {
-		    				indexQ[tempi]--;
-		    		    	if(indexQ[tempi]==-1) indexQ[tempi]=maxiQ[tempi]-1;
-		    		    	imageView.setImage(imgQ[tempi][indexQ[tempi]]);
+		    				if(mode==1) {
+		    					indexQ[tempi]--;
+			    		    	if(indexQ[tempi]==-1) indexQ[tempi]=maxiQ[tempi]-1;
+			    		    	imageView.setImage(imgQ[tempi][indexQ[tempi]]);
+		    				}
+		    				else {
+		    					indexA[tempi]--;
+			    		    	if(indexA[tempi]==-1) indexA[tempi]=maxiA[tempi]-1;
+			    		    	imageView.setImage(imgA[tempi][indexA[tempi]]);
+		    				}
 		    			}
 		    		});
 				}
@@ -397,18 +520,37 @@ public class Main extends Application {
 					
 					change[i][j].setOnAction(new EventHandler<ActionEvent>() {
 		    			public void handle(ActionEvent event) {
-		    				indexQ[tempi]++;
-		    		    	if(indexQ[tempi]==maxiQ[tempi]) indexQ[tempi]=0;
-		    		    	imageView.setImage(imgQ[tempi][indexQ[tempi]]);
+		    				if(mode==1) {
+		    					indexQ[tempi]++;
+			    		    	if(indexQ[tempi]==maxiQ[tempi]) indexQ[tempi]=0;
+			    		    	imageView.setImage(imgQ[tempi][indexQ[tempi]]);
+		    				}
+		    				else {
+		    					indexA[tempi]++;
+			    		    	if(indexA[tempi]==maxiA[tempi]) indexA[tempi]=0;
+			    		    	imageView.setImage(imgA[tempi][indexA[tempi]]);
+		    				}
+		    				
 		    			}
 		    		});
 				}
 				if(j==2) {
 					change[i][j]=new Button("show answer");
-					
+					change[i][j].setOnAction(new EventHandler<ActionEvent>() {
+		    			public void handle(ActionEvent event) {
+		    				mode=2;
+		    				imageView.setImage(imgA[tempi][indexA[tempi]]);
+		    			}
+		    		});
 				}
 				if(j==3) {
 					change[i][j]=new Button("hide answer");
+					change[i][j].setOnAction(new EventHandler<ActionEvent>() {
+		    			public void handle(ActionEvent event) {
+		    				mode=1;
+		    				imageView.setImage(imgQ[tempi][indexQ[tempi]]);
+		    			}
+		    		});
 				}
 				tempi=0;
 				tempj=0;
