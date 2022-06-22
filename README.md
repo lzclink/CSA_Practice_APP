@@ -1,1 +1,15 @@
 # CSA_Practice_APP
+### To be continued (The Release will soon be released)
+
+![demo1](/demo/0.png)
+![demo2](/demo/1.png)
+![demo3](/demo/2.png)
+![demo4](/demo/3.png)
+![demo5](/demo/4.png)
+![demo6](/demo/5.png)
+![demo7](/demo/6.png)
+![demo8](/demo/7.png)
+![demo9](/demo/8.png)
+![demo10](/demo/9.png)
+![demo11](/demo/10.png)
+![demo12](/demo/11.png)
